@@ -27,7 +27,7 @@ $$w_1: m_2, m_1, m_3$$\\
 $$w_2: m_1, m_2, m_3$$\\
 $$w_3: m_1, m_2, m_3$$
 
-Given these preference lists, and a matching $$(m_1, w_3), (m_2, w_2), (m_3, w_1),$$ we can assert that this is not a stable matching. The reason is because $$(m_1, w_2)$$ is an unmatched pair that prefer each other to their current partners. However if we looked at a different matching, $$(m_1, w_1), (m_2, w_2), (m_3, w_3),$$ we get a stable matching, despite $$m_3$$ and $$w_3$$ being matched with their lowest preference.
+Given these preference lists and a matching $$(m_1, w_3), (m_2, w_2), (m_3, w_1),$$ we can assert that this is not a stable matching. The reason is because $$(m_1, w_2)$$ is an unmatched pair that prefer each other to their current partners. However if we looked at a different matching, $$(m_1, w_1), (m_2, w_2), (m_3, w_3),$$ we get a stable matching, despite $$m_3$$ and $$w_3$$ being matched with their lowest preference.
 
 A fact that isn't obvious is that there always exists a stable matching. We will show this through a correct algorithm that terminates and gives a stable matching for any inputs.
 
