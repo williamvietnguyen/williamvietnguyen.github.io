@@ -1,15 +1,20 @@
-# Thinkspace
+# My Personal Site
 
-Run `bundle install`
+### Requirements:
 
-> Thinkspace is just another minimalist Jekyll theme which designed for technical writing blog.
+- Ruby version 2.4.0 or higher
+- RubyGems
+- GCC and Make
+- Jekyll
+- Bundler
 
-[![LICENSE](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) ![GENERATOR](https://img.shields.io/badge/made_with-jekyll-blue.svg) ![VERSION](https://img.shields.io/badge/current_version-2.5-green.svg) ![TRAVIS-CI](https://travis-ci.org/heiswayi/thinkspace.svg?branch=master)
+### Set up:
 
-- **Demo:** https://heiswayi.github.io/thinkspace/
+Run the following to run locally on localhost:4000.
 
-![SCREENSHOT](https://i.imgur.com/1YS078k.png)
+1. `bundle install`
+2. `bundle exec jekyll serve`
 
-## License
+### Credit
 
-[MIT](LICENSE.md)
+Jekyll Theme is called [Thinkspace](https://github.com/heiswayi/thinkspace) by Heiswayi Nrird.
