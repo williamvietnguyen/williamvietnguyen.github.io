@@ -5,7 +5,16 @@ description: Analysis and explanation of Gale-Shapley
 author: William Nguyen
 ---
 
-Due to obtaining a teaching assistant position for an algorithms course, I am beginning to revisit the different topics. One such topic is the stable matching problem. The problem is as follows:
+Due to obtaining a teaching assistant position for an algorithms course, I am beginning to revisit the different topics. One such topic is the stable matching problem.
+
+# Table of Contents
+
+1. [The Problem](#the-problem)
+2. [The Gale-Shapley Algorithm](#the-gale-shapley-algorithm)
+3. [Correctness](#correctness)
+4. [The Optimal Matching](#the-optimal-matching)
+5. [The Pessimal Matching](#the-pessimal-matching)
+6. [Some Reflections and Further Self Study](#some-reflections-and-further-self-study)
 
 ### The Problem
 
