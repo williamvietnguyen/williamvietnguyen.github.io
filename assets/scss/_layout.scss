@@ -82,6 +82,10 @@ hr {
     background: lighten($light-gray-color, 15%);
   }
 
+  .lead {
+    font-size: 1em;
+  }
+
   a {
     @extend .link;
   }

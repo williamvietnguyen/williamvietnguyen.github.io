@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Revisiting Stable Matching Problem
+title: "Stable Matching Problem"
 description: Analysis and explanation of Gale-Shapley
 author: William Nguyen
 ---
