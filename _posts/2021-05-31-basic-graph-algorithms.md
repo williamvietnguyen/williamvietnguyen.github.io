@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "Graph Algorithms"
+title: "Basic Graph Algorithms"
 description: Some Graph Theory
 author: William Nguyen
 ---
 
-Graphs are my favorite abstract data type, mainly because the fundamental algorithms are so cute. I am not sure if my undergraduate education on graphs does the subject justice, but this is my attempt at summarizing the concepts that I've learned in this area during university (minus spectral graph theory, I may dedicate a post to that later on). These algorithms are pretty timeless, so I'd like to have some personal documentation of them.
+Graphs are my favorite abstract data type. I am not sure if my undergraduate education on graphs does the subject justice, but this is my attempt at summarizing the basic concepts and algorithms that I've learned in this area during university (minus spectral graph theory, I may dedicate a post to that later on). These algorithms are pretty timeless, so I'd like to have some personal documentation of them, intended to be read by someone who just wants a quick overview of the subject.
 
 # Table of Contents
 
@@ -56,7 +56,7 @@ The main alternative to adjacency lists is the **adjacency matrix**. This is rep
 
 $$\begin{bmatrix}1 & 0 & 1 & 0\\0 & 0 & 2 & 0\\ 1 & 2 & 0 & 1 \\ 0 & 0 & 1 & 0\\\end{bmatrix}$$
 
-A benefit of the adjacency matrix is the ability to determine if two vertices have an edge in $$\mathcal{O}(1)$$ time. Also we can add or remove edges in $$\mathcal{O}(1),$$ which the adjacency list doesn't do as quickly in the worst case. However, the adjacency matrix is less space-efficient, as it requires $$\mathcal{O}(\\|V\\|^2)$$ space complexity, compared to its counterpart which requires less. If the graph is sparse, then the matrix will find itself filled with zeroes, wasting space representing the absence of a relationship.
+A benefit of the adjacency matrix is the ability to determine if two vertices have an edge in $$\mathcal{O}(1)$$ time. Also we can add or remove edges in $$\mathcal{O}(1),$$ which the adjacency list doesn't do as quickly in the worst case. However, the adjacency matrix is less space efficient, as it requires $$\mathcal{O}(\\|V\\|^2)$$ space complexity, compared to its counterpart which requires less. If the graph is sparse, then the matrix will find itself filled with zeroes, a space inefficient representation of the absence of a relationship.
 
 ### Breadth-First and Depth-First Search
 
@@ -91,7 +91,7 @@ DFS(v):
             DFS(u)
 ```
 
-**Depth-first search** is the other algorithm for searching. It involves exploring as far as possible along some path before backtracking to explore other paths. This can be implemented using a stack, but is more often done recursively using the callstack. For each call of DFS, we see examine a vertex's neighbors, calling DFS again on one of its neighbors. Similar to BFS, we should mark vertices discovered as we visit them. And also similar to BFS, this algorithm operates in time linear to the number of vertices and edges, $$\mathcal{O}(\\|V\\| + \\|E\\|).$$
+**Depth-first search** is the other fundamental algorithm for searching. It involves exploring as far as possible along some path before backtracking to explore other paths. This can be implemented using a stack, but is more often done recursively using the callstack. For each call of DFS, we examine a vertex's neighbors, calling DFS again on one of its neighbors. Similar to BFS, we should mark vertices discovered as we visit them. And also similar to BFS, this algorithm operates in time linear to the number of vertices and edges, $$\mathcal{O}(\\|V\\| + \\|E\\|).$$
 
 <img src="/assets/images/DFS.png" alt="dfs" width="60%"/>
 
@@ -101,7 +101,7 @@ In general, these two algorithms are very powerful. Many problems involving grap
 
 ### Shortest Paths
 
-While BFS is useful for finding shortest paths in unweighted graphs, it fails to capture the shortest paths in weighted graphs, were each edge contains a numerical label that indicates the cost of traversing that edge.
+While BFS is useful for finding shortest paths in unweighted graphs, it fails to capture the shortest paths in weighted graphs, where each edge contains a numerical label that indicates the cost of traversing that edge.
 
 ```
 dijkstras(G = (V, E), src):
@@ -123,7 +123,7 @@ dijkstras(G = (V, E), src):
     return dist, parent
 ```
 
-**Dijkstra's algorithm** is one of the most famous graph traversal algorithms. It only works on weighted graphs in which the weights are positive values. It finds the shortest path to all vertices from some source vertex $$src$$. The proof of this algorithm is by induction. Without going into the weeds with this induction, the intuition for it is that of a greedy approach. The idea that if there was a better path than the one we just evaluated, we would have visited that path before hand. This algorithm can take $$\mathcal{O}((\\|V\\| + \\|E\\|)log(\\|V\\|))$$ if we use a binary heap for our priority queue. Using a fibonacci heap we can improve to $$\mathcal{O}(\\|E\\| + \\|V\\|log(\\|V\\|)).$$
+**Dijkstra's algorithm** is one of the most famous graph traversal algorithms. It only works on weighted graphs in which the weights are positive values. It finds the shortest path to all vertices from some source vertex $$src.$$ The proof of this algorithm is by induction. Without going into the weeds with this induction, the intuition for it is that of a greedy approach. The idea that if there was a better path than the one we just evaluated, we would have visited that path before hand. This algorithm can take $$\mathcal{O}((\\|V\\| + \\|E\\|)log(\\|V\\|))$$ if we use a binary heap for our priority queue. Using a fibonacci heap we can improve to $$\mathcal{O}(\\|E\\| + \\|V\\|log(\\|V\\|)).$$
 
 <img src="/assets/images/shortestpaths.png" alt="shortestpath" width="60%"/>
 ```
@@ -151,7 +151,7 @@ a_star(G = (V, E), src, dest, heuristic):
     return failure
 ```
 
-**A\* search** is an efficient algorithm for finding the shortest path between two vertices in a weighted graph. We can view it as an extension of Dijkstra's algorithm with this added heuristic that guides our search. For example, this heuristic can be the Euclidean distance between dest and the given vertex. At each iteration, it decides which vertex $$u$$ to visit next based on this value $$\text{f}(u) = \text{dist}[u] + \text{heuristic}(u)$$. This algorithm has a similar time complexity to Dijkstra's algorithm, although it is likely to terminate earlier due to pruning paths along its search.
+**A\* search** is an efficient algorithm for finding the shortest path between two vertices in a weighted graph. We can view it as an extension of Dijkstra's algorithm with this added heuristic that guides our search. For example, this heuristic can be the Euclidean distance between destination and the given vertex. At each iteration, it decides which vertex $$u$$ to visit next based on this value $$\text{f}(u) = \text{dist}[u] + \text{heuristic}(u).$$ This algorithm has a similar time complexity to Dijkstra's algorithm, although it is likely to terminate earlier due to pruning paths along its search.
 
 ```
 bellman_ford(G = (V, E), src):
@@ -172,7 +172,7 @@ bellman_ford(G = (V, E), src):
     return parent, dist
 ```
 
-The **Bellman-Ford algorithm** accomplishes the task of finding a shortest path from a single vertex to all vertices in a weighted directed graph. The advantage to this algorithm over Dijkstra's algorithm is that it works on weighted graphs with negative weights. The issue found within Dijkstra's algorithm occured when we had a **negative cycle**, defined as a cycle in which the sum of the weights are negative. To gain a more negative cost path in this case, Dijkstra's would iterate through the cycle an infinite number of times. To combat this, Bellman-Ford is able to detect if a negative cycle exists. The essence is in the fact that the maximum length of a path is $$\\|V\\| - 1,$$ in which we improve our paths by 1 edge each iteration by brute forcing over all edges. This is why when we do a final pass after $$\\|V\\| - 1$$ iterations, a decrease in the cost of any path indicates a negative cycle. Bellman-Ford is slower than Dijkstra's algorithm, performing in $$\mathcal{O}(\\|V\\|\\|E\\|)$$.
+The **Bellman-Ford algorithm** accomplishes the task of finding a shortest path from a single vertex to all vertices in a weighted directed graph. The advantage to this algorithm over Dijkstra's algorithm is that it works on weighted graphs with negative weights. The issue found within Dijkstra's algorithm occured when we had a **negative cycle**, defined as a cycle in which the sum of the weights are negative. To gain a more negative cost path in this case, Dijkstra's would iterate through the cycle an infinite number of times. To combat this, Bellman-Ford is able to detect if a negative cycle exists. The essence is in the fact that the maximum length of a path is $$\\|V\\| - 1,$$ in which we improve our paths by 1 edge each iteration by brute forcing over all edges. This is why when we do a final pass after $$\\|V\\| - 1$$ iterations, a decrease in the cost of any path indicates a negative cycle. Bellman-Ford is slower than Dijkstra's algorithm, performing in $$\mathcal{O}(\\|V\\|\\|E\\|).$$
 
 ### Minimum Spanning Trees
 
@@ -208,7 +208,7 @@ kruskals(G = (V, E)):
 
 Kruskal's algorithm builds the MST using a union-find data structure. Initially all the vertices are in their
 own sets. We build our tree by greedily combining these sets by looking at the lowest cost edge.
-This algorithm runs in $$\mathcal{O}(\\|E\\|log(\\|E\\|))$$.
+This algorithm runs in $$\mathcal{O}(\\|E\\|log(\\|E\\|)).$$
 
 ### Directed Acyclic Graphs
 
@@ -233,8 +233,8 @@ visit(v, L):
     add v to head of L
 ```
 
-This algorithm deploys a depth first search and therefore it performs in $$\mathcal{O}(\\|E\\| + \\|V\\|)$$.
-The idea is in constructing the order backwards, in which we stop calling the visit DFS once we hit a marked vertex or a vertex with outdegree equal to $$0$$.
+This algorithm deploys a depth first search and therefore it performs in $$\mathcal{O}(\\|E\\| + \\|V\\|).$$
+The idea is in constructing the order backwards, in which we stop calling the visit DFS once we hit a marked vertex or a vertex with outdegree equal to $$0.$$
 
 ```
 kahns(G = (V, E)):
@@ -253,23 +253,19 @@ kahns(G = (V, E)):
     return L
 ```
 
-Another algorithm for determining a topological ordering is Kahn's algorithm. This also performs in $$\mathcal{O}(\\|E\\| + \\|V\\|)$$. The order in which the ordering is built is also the order of the ordering. Each time we add
-a vertex $$v$$ to the ordering, that vertex has $$0$$ incoming edges. Upon adding the vertex to the ordering, we also examine the vertices adjacent to it, denote u, in which we remove this edge $$\{v, u\}$$ from the graph. Then adding to our set of vertices with $$0$$ incoming edges, any vertices with $$0$$ incoming edges now.
+Another algorithm for determining a topological ordering is Kahn's algorithm. This also performs in $$\mathcal{O}(\\|E\\| + \\|V\\|).$$ The order in which the ordering is built is also the order of the ordering. Each time we add
+a vertex $$v$$ to the ordering, that vertex has $$0$$ incoming edges. Upon adding the vertex to the ordering, we also examine the vertices adjacent to it, denoted $$u,$$ in which we remove this edge $$\{v, u\}$$ from the graph. Then adding to our set of vertices with $$0$$ incoming edges, any new vertices with $$0$$ incoming edges now.
 
 ### Network Flow
 
 In flow network models, we have a directed graph $$G$$ with capacities along its edges. Suppose we want to send flow along the edges, knowing that these flow amounts cannot exceed the capacities of the edges. We will have a source vertex $$s$$ that emits the flow and a sink vertex $$t$$ that collects the flow. We want to compute the maximum amount of flow that we can send in our network.
 
-An $$s-t$$ cut of a flow network $$(G = (V, E), s, t, c)$$ where $$c$$ is the cost of the edges, is a partition of $$V$$ into two sets $$S$$ and $$T$$ where $$s \in S$$ and $$t \in T.$$ The **capacity** of a cut $$C(S, T)$$, denoted $$c(S, T)$$, is the sum of the capacities of the edges $$(u, v)$$ with $$u \in S$$ and $$v \in T.$$ That being: $$c(S, T) = \sum_{u \in S} \sum_{v \in T} c(u,v).$$
+An $$s-t$$ cut of a flow network $$(G = (V, E), s, t, c)$$ where $$c$$ is the cost of the edges, is a partition of $$V$$ into two sets $$S$$ and $$T$$ where $$s \in S$$ and $$t \in T.$$ The **capacity** of a cut $$C(S, T),$$ denoted $$c(S, T),$$ is the sum of the capacities of the edges $$(u, v)$$ with $$u \in S$$ and $$v \in T.$$ That being: $$c(S, T) = \sum_{u \in S} \sum_{v \in T} c(\{u,v\}).$$
 
-The flow of a cut $$C(S, T)$$ is the amount of flow that crosses from $$S$$ to $$T$$, denoted $$f(S, T)$$ is defined as $$f(S, T) = (\sum_{u \in S}\sum_{v \in T} f(u ,v) - \sum_{v \in T}\sum_{u \in S} f(v, u))$$
+The flow of a cut $$C(S, T)$$ is the amount of flow that crosses from $$S$$ to $$T,$$ denoted $$f(S, T)$$ and is defined as $$f(S, T) = (\sum_{u \in S}\sum_{v \in T} f(u ,v) - \sum_{v \in T}\sum_{u \in S} f(v, u))$$
 
 A useful theorem to note is the **max-flow min-cut theorem**. It asserts that the maximum amount of flow $$f$$
 that can pass from the source $$s$$ to the sink $$t$$ is equal to the capacity of the minimum $$s-t$$ cut.
-
-There is a useful algorithm for computing the maximum flow of a flow network. It is called **Ford-Fulkerson algorithm** and the details of it are best done through a picture.
-
-<img src="/assets/images/ffalgo.png" alt="ff" width="60%"/>
 
 ```
 ford_fulkerson(G = (V, E)):
@@ -282,6 +278,10 @@ ford_fulkerson(G = (V, E)):
             f(v, u) = f(v, u) - c_f(p)
 ```
 
+There is a useful algorithm for computing the maximum flow of a flow network and it is called the **Ford-Fulkerson algorithm**. Its details are best done through pictures. We continually find paths in our flow network, in which we can push flow along. This pushing of flow, gives us an edge that goes in the opposite direction with that flow amount. Once we exhaust all the paths that we can push flow along, whatever vertices are reachable by $$s$$ still, creates the $$S$$ partition in the cut.
+
+<img src="/assets/images/FF.png" alt="ff" width="80%"/>
+
 ### Acknowledgements
 
-I acknowledge the following courses at the Univeristy of Washington for teaching me much of what I know about graph theory: CSE 311 (Foundations), CSE 331 (SWE), CSE 332 (Data Structures), CSE 417 (Algos + Complexity), CSE 446 (ML), CSE 421 (Algos), and CSE 490Z1/422 (Modern Algos). I also acknowledge the Google search engine and its web results for helping me formalize my previous knowledge as well as teaching me things that I never knew I wanted to know (never occurred to me that I could do a topological sort with DFS).
+I acknowledge the following courses at the Univeristy of Washington for teaching me much of what I know about graph theory: CSE 311 (Foundations), CSE 331 (SWE), CSE 332 (Data Structures), CSE 417 (Algos + Complexity), CSE 446 (ML), CSE 421 (Algos), and CSE 490Z1/422 (Modern Algos). I also acknowledge the Google search engine and its web results for helping me formalize my previous knowledge as well as teaching me things that I never knew I wanted to know (never occurred to me that I could do a topological sort with simple DFS calls).
