@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Sage Bionetworks 6-Month Internship"
+title: "Contributing to Synapse [Long Read]"
 description: Documentation of my experience interning at Sage
 author: William Nguyen
 ---
