@@ -38,7 +38,7 @@ author: William Nguyen
 
 ### Introduction
 
-Sage Bionetworks is a nonprofit open-science biomedical research and technology development institution whose goal is to enable responsible data sharing, promote reproducible research, and accelerate advances in research towards diseases like cancer and neurodegenerative diseases. The team I was on is called Synapse (learn more at [synapse.org](https://synapse.org)). The Synapse platform is a suite of web services and tools to enable researchers to collaborate, share, and analyze data. The platform contains a web client, a python client, an R client, and a command line client to interact with Synapse. These clients use Syanpse's back-end RESTful web services. I was a back-end engineer on Synapse's RESTful web services, programming in Java. This is a remote internship due to the COVID-19 pandemic. I was compensated with $37 an hour.
+Sage Bionetworks is a nonprofit open-science biomedical research and technology development institution whose goal is to enable responsible data sharing, promote reproducible research, and accelerate advances in research towards diseases like cancer and neurodegenerative diseases. The team I was on is called Synapse (learn more at [synapse.org](https://synapse.org)). The Synapse platform is a suite of web services and tools to enable researchers to collaborate, share, and analyze data. The platform contains a web client, a python client, an R client, and a command line client to interact with Synapse. These clients use Syanpse's back-end RESTful web services. I was a back-end engineer intern on Synapse's RESTful web services, programming in Java. This is a remote internship due to the COVID-19 pandemic. I was compensated with $37 an hour.
 
 ### Week 1: April 5 to 9
 
