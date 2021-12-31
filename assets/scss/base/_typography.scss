@@ -91,7 +91,7 @@ code {
   background: none;
   border-radius: 0;
   border: none;
-  font-family: "SFMono-Regular",Menlo,Consolas,"Inconsolata",monospace;
+  font-family: "SFMono-Regular", Menlo, Consolas, "Inconsolata", monospace;
   font-size: 1em;
   margin: 0;
   padding: 0 5px;
@@ -100,7 +100,7 @@ code {
 
 pre {
   -webkit-overflow-scrolling: touch;
-  font-family: "SFMono-Regular",Menlo,Consolas,"Inconsolata",monospace;
+  font-family: "SFMono-Regular", Menlo, Consolas, "Inconsolata", monospace;
   font-size: 1em;
   margin: 0;
   padding: 5px 10px !important;
@@ -126,10 +126,10 @@ em {
 ul,
 ol,
 dl {
-    margin-top: 0;
-    margin-left: 1.2em;
-    margin-bottom: 1rem;
-    list-style-type: square;
-    list-style-position: outside;
-    list-style-image: none;
+  margin-top: 0;
+  margin-left: 1.2em;
+  margin-bottom: 1rem;
+  list-style-type: square;
+  list-style-position: outside;
+  list-style-image: none;
 }
