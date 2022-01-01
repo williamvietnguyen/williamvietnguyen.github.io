@@ -56,7 +56,7 @@ hr {
 }
 
 .link {
-  color: $blue-color;
+  color: $purple-color;
   padding-bottom: 0.05em;
   border-bottom: 2px solid transparent;
 
@@ -65,7 +65,7 @@ hr {
   &:hover,
   &:focus,
   &:active {
-    border-bottom: 2px solid $blue-color;
+    border-bottom: 2px solid $purple-color;
   }
 }
 
