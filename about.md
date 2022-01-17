@@ -8,15 +8,23 @@ I'm a 4th year undergraduate at the [University of Washington](https://washingto
 
 Currently:
 
-- Undergraduate Teaching Assistant: [CSE 417 2022 Winter](https://courses.cs.washington.edu/courses/cse417/22wi/) at the [Paul G. Allen School of Computer Science & Engineering](https://cs.washington.edu)
+- Undergraduate Teaching Assistant: [CSE 417 Algorithms & Computational Complexity Winter 2022](https://courses.cs.washington.edu/courses/cse417/22wi/) at the [Paul G. Allen School of Computer Science & Engineering](https://cs.washington.edu)
 
 Formerly:
 
-- Undergraduate Teaching Assistant: [CSE 417 2021 Autumn](https://courses.cs.washington.edu/courses/cse417/21au/) at the [Paul G. Allen School of Computer Science & Engineering](https://cs.washington.edu)
+- Undergraduate Teaching Assistant: [CSE 417 Algorithms & Computational Complexity Autumn 2021](https://courses.cs.washington.edu/courses/cse417/21au/) at the [Paul G. Allen School of Computer Science & Engineering](https://cs.washington.edu)
 
 - Software Engineer Intern: Contributed to the test-driven development and maintenance of the back end of the [Synapse Platform](https://www.synapse.org) at [Sage Bionetworks](https://sagebionetworks.org)
 
-- Undergraduate Teaching Assistant: [CSE 417 2021 Winter](https://courses.cs.washington.edu/courses/cse417/21wi/) at the [Paul G. Allen School of Computer Science & Engineering](https://cs.washington.edu)
+- Undergraduate Teaching Assistant: [CSE 417 Algorithms & Computational Complexity Winter 2021](https://courses.cs.washington.edu/courses/cse417/21wi/) at the [Paul G. Allen School of Computer Science & Engineering](https://cs.washington.edu)
+
+Some awards:
+
+- Washington State Opportunity Scholarship ($17.5k)
+
+- John Jamieson Iron Mountain Education Fund Scholarship ($16k)
+
+- Viola Brown Memorial Scholarship ($1k)
 
 Contact: williamv [at] cs [dot] washington [dot] edu
 

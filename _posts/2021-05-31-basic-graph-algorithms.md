@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Basic Graph Algorithms"
+title: "Overview of Elementary Graph Algorithms"
 description: Some Graph Theory
 author: William Nguyen
 ---
@@ -62,19 +62,28 @@ A benefit of the adjacency matrix is the ability to determine if two vertices ha
 
 The most important algorithms on graphs are searching algorithms. Being able to traverse the entire graph in a brute force manner allows us to accomplish many tasks.
 
-```
-BFS(src):
-    Initialize queue Q
-    Initialize visited set S
-    S.add(src)
-    Q.enqueue(src)
-    while Q is not empty:
-        v = Q.dequeue()
-        for each u ∈ Neighbors(v):
-            if u ∉ S:
-                Q.add(u)
-                S.add(u)
-```
+<pre id ="BFS" style="display:hidden;">
+    \begin{algorithm}
+    \caption{Breadth First Search}
+    \begin{algorithmic}
+    \PROCEDURE{BFS}{$G, src$}
+        \STATE $queue \leftarrow \emptyset$
+        \STATE $visited \leftarrow \emptyset$
+        \STATE $queue.$\CALL{add}{$src$}
+        \STATE $visited.$\CALL{add}{$src$}
+        \WHILE {$queue \neq \emptyset$}
+            \STATE $u \leftarrow queue.$\CALL{remove}{}
+            \FOR {$v \in G.adj[u]$}
+                \IF {$v \notin visited$}
+                    \STATE $visited.$\CALL{add}{$v$}
+                    \STATE $queue.$\CALL{add}{$v$}
+                \ENDIF
+            \ENDFOR
+        \ENDWHILE
+    \ENDPROCEDURE
+    \end{algorithmic}
+    \end{algorithm}
+</pre>
 
 **Breadth-first search** is an algorithm that traverses the graph starting from a source vertex, level by level. We add the starting vertex to the queue, then as long as the queue is not empty, we remove a vertex from the queue, and append its undiscovered neighbors. This algorithm operates in time linear to the number of vertices and edges, $$\mathcal{O}(\\|V\\| + \\|E\\|).$$
 
@@ -82,14 +91,21 @@ BFS(src):
 
 There are an endless number of applications of BFS, here is a few. We can find a path between two vertices if we keep a track of the paths created by the traversal. This path that is found is actually the shortest path between two vertices on unweighted graphs. We can count the number of connected components by calling BFS on a set of unvisited vertices until we visited all the vertices in the set. We can determine if a graph is **bipartite**, which is a graph that can be partitioned into two sets of vertices $$U$$ and $$V$$ such that all edges connect a vertex in $$U$$ to a vertex in $$V.$$ To determine if a graph is bipartite, we would need to ensure that we could color each vertex one of two colors such that no vertex has a neighbor with the same color. This can be done via BFS. Also to note, bipartite graphs do not contain odd-length cycles.
 
-```
-Initialize visited set S
-DFS(v):
-    S.add(v)
-    for each u ∈ Neighbors(v):
-        if u ∉ S:
-            DFS(u)
-```
+<pre id ="DFS" style="display:hidden;">
+    \begin{algorithm}
+    \caption{Depth First Search}
+    \begin{algorithmic}
+    \PROCEDURE{DFS}{$G, u, visited$}
+        \STATE $visited.$\CALL{add}{$u$}
+        \FOR {$v \in G.adj[u]$}
+            \IF {$v \notin visited$}
+                \STATE \CALL{DFS}{$G, v, visited$}
+            \ENDIF
+        \ENDFOR
+    \ENDPROCEDURE
+    \end{algorithmic}
+    \end{algorithm}
+</pre>
 
 **Depth-first search** is the other fundamental algorithm for searching. It involves exploring as far as possible along some path before backtracking to explore other paths. This can be implemented using a stack, but is more often done recursively using the callstack. For each call of DFS, we examine a vertex's neighbors, calling DFS again on one of its neighbors. Similar to BFS, we should mark vertices discovered as we visit them. And also similar to BFS, this algorithm operates in time linear to the number of vertices and edges, $$\mathcal{O}(\\|V\\| + \\|E\\|).$$
 
@@ -103,74 +119,119 @@ In general, these two algorithms are very powerful. Many problems involving grap
 
 While BFS is useful for finding shortest paths in unweighted graphs, it fails to capture the shortest paths in weighted graphs, where each edge contains a numerical label that indicates the cost of traversing that edge.
 
-```
-dijkstras(G = (V, E), src):
-    Initialize priority queue Q
-    for each v ∈ V:
-        if v is not src:
-            dist[v] = infinity
-            parent[v] = null
-        Q.enqueue_with_priority(v, dist[v])
-    dist[src] = 0
-    while Q is not empty:
-        u = Q.min_dequeue()
-        for each v ∈ Neighbors(u):
-            alt = dist[u] + cost({u, v})
-            if alt < dist[v]:
-                dist[v] = alt
-                parent[v] = u
-                Q.decrease_priority(v, alt)
-    return dist, parent
-```
+<pre id ="Dijkstras" style="display:hidden;">
+    \begin{algorithm}
+    \caption{Dijkstra's}
+    \begin{algorithmic}
+    \PROCEDURE{Dijkstras}{$G, src$}
+        \STATE $queue \leftarrow \emptyset$
+        \STATE $dist \leftarrow \emptyset$
+        \STATE $parent \leftarrow \emptyset$
+        \FOR {$v \in G$}
+            \IF {$v \neq src$}
+                \STATE $dist[v] \leftarrow \infty$
+                \STATE $parent[v] \leftarrow null$
+                \STATE $queue.$\CALL{enqueue-priority}{$v, dist[v]$}
+            \ENDIF
+        \ENDFOR
+        \STATE $dist[src] \leftarrow 0$
+        \STATE $queue.$\CALL{enqueue-priority}{$src, dist[src]$}
+        \WHILE {$queue \neq \emptyset$}
+            \STATE $u \leftarrow queue.$\CALL{extract-min}{}
+            \FOR {$v \in G.adj[u]$}
+                \STATE $alt = dist[u] + $\CALL{cost}{$u, v$}
+                \IF {$alt < dist[v]$}
+                    \STATE $dist[v] \leftarrow alt$
+                    \STATE $parent[v] = u$
+                    \STATE $queue.$\CALL{decrease-priority}{$v, alt$}
+                \ENDIF
+            \ENDFOR
+        \ENDWHILE
+        \RETURN{$dist, parent$}
+    \ENDPROCEDURE
+    \end{algorithmic}
+    \end{algorithm}
+</pre>
 
 **Dijkstra's algorithm** is one of the most famous graph traversal algorithms. It only works on weighted graphs in which the weights are positive values. It finds the shortest path to all vertices from some source vertex $$src.$$ The proof of this algorithm is by induction. Without going into the weeds with this induction, the intuition for it is that of a greedy approach. The idea that if there was a better path than the one we just evaluated, we would have visited that path before hand. This algorithm can take $$\mathcal{O}((\\|V\\| + \\|E\\|)log(\\|V\\|))$$ if we use a binary heap for our priority queue. Using a fibonacci heap we can improve to $$\mathcal{O}(\\|E\\| + \\|V\\|log(\\|V\\|)).$$
 
 <img src="/assets/images/shortestpaths.png" alt="shortestpath" width="60%"/>
-```
-a_star(G = (V, E), src, dest, heuristic):
-    Intitialize priority queue Q
-    Initialize closed set S
-    for each v ∈ V:
-        if v is not src:
-            dist[v] = infinity
-            parent[v] = null
-    dist[src] = 0
-    Q.enqueue_with_priority(src, 0)
-    while Q is not empty:
-        u = Q.min_dequeue()
-        if u is dest:
-            return dest, dist, parent
-        S.add(u)
-        for each v ∈ Neighbors(u):
-            if v ∉ S:
-                alt = dist[u] + cost({u, v})
-                if alt < dist[v]:
-                    dist[v] = alt
-                    parent[v] = u
-                    Q.enqueue_with_priority(v, alt + heuristic(v))
-    return failure
-```
+
+<pre id ="Astar" style="display:hidden;">
+    \begin{algorithm}
+    \caption{A* Search}
+    \begin{algorithmic}
+    \PROCEDURE{Astar}{$G, src, dst$}
+        \STATE $queue \leftarrow \emptyset$
+        \STATE $set \leftarrow \emptyset$
+        \STATE $dist \leftarrow \emptyset$
+        \STATE $parent \leftarrow \emptyset$
+        \FOR {$v \in G$}
+            \IF {$v \neq src$}
+                \STATE $dist[v] \leftarrow \infty$
+                \STATE $parent[v] \leftarrow null$
+            \ENDIF
+        \ENDFOR
+        \STATE $dist[src] \leftarrow 0$
+        \STATE $queue.$\CALL{enqueue-priority}{$src, dist[src]$}
+        \WHILE {$queue \neq \emptyset$}
+            \STATE $u \leftarrow queue.$\CALL{extract-min}{}
+            \IF {$u == dst$}
+                \RETURN {$u, dist, parent$}
+            \ENDIF
+            \STATE $set.$\CALL{add}{u}
+            \FOR {$v \in G.adj[u]$}
+                \IF {$v \notin set$}
+                    \STATE $alt \leftarrow dist[u] +$ \CALL{cost}{$u, v$}
+                    \IF {$alt < dist[v]$}
+                        \STATE $dist[v] \leftarrow alt$
+                        \STATE $parent[v] = u$
+                        \STATE $queue.$\CALL{enqueue-priority}{$v, alt + $\CALL{heuristic}{$v$}}
+                    \ENDIF
+                \ENDIF
+            \ENDFOR
+        \ENDWHILE
+        \RETURN{$failure$}
+    \ENDPROCEDURE
+    \end{algorithmic}
+    \end{algorithm}
+</pre>
 
 **A\* search** is an efficient algorithm for finding the shortest path between two vertices in a weighted graph. We can view it as an extension of Dijkstra's algorithm with this added heuristic that guides our search. For example, this heuristic can be the Euclidean distance between destination and the given vertex. At each iteration, it decides which vertex $$u$$ to visit next based on this value $$\text{f}(u) = \text{dist}[u] + \text{heuristic}(u).$$ This algorithm has a similar time complexity to Dijkstra's algorithm, although it is likely to terminate earlier due to pruning paths along its search.
 
-```
-bellman_ford(G = (V, E), src):
-    for each v ∈ V:
-        if v is not src:
-            dist[v] = infinity
-            parent[v] = null
-    dist[src] = 0
-    n = |V|
-    for i from 1 to n - 1:
-        for each {u, v} ∈ E:
-            if dist[u] + cost({u, v}) < dist[v]:
-                dist[v] = min{dist[v], dist[u] + cost({u, v})}
-                parent[v] = u
-    for each {u, v} ∈ E:
-        if dist[u] + cost({u, v}) < dist[v]:
-            return "negative cycle"
-    return parent, dist
-```
+<pre id ="BellmanFord" style="display:hidden;">
+    \begin{algorithm}
+    \caption{Bellman-Ford}
+    \begin{algorithmic}
+    \PROCEDURE{BellmanFord}{$G, src$}
+        \STATE $dist \leftarrow \emptyset$
+        \STATE $parent \leftarrow \emptyset$
+        \FOR {$v \in G$}
+            \IF {$v \neq src$}
+                \STATE $dist[v] \leftarrow \infty$
+                \STATE $parent[v] \leftarrow null$
+            \ENDIF
+        \ENDFOR
+        \STATE $dist[src] \leftarrow 0$
+        \STATE $N \leftarrow G.$\CALL{num-vertices}{}
+        \FOR {$i=1$ \TO $N-1$}
+            \FOR {$\{u, v\} \in G.$\CALL{edges}{}}
+                \IF {$dist[u] + $\CALL{cost}{$\{u, v\}$} $< dist[v]$}
+                    \STATE $dist[v] \leftarrow dist[u] + $\CALL{cost}{$\{u, v\}$}
+                    \STATE $parent[v] \leftarrow u$
+                \ENDIF
+            \ENDFOR
+        \ENDFOR
+        \FOR {$\{u, v\} \in G.$\CALL{edges}{}}
+            \IF {$dist[u] + $\CALL{cost}{$\{u, v\}$} $< dist[v]$}
+                \RETURN{failure}
+            \ENDIF
+        \ENDFOR
+        \RETURN{$dist, parent$}
+    \ENDPROCEDURE
+    \end{algorithmic}
+    \end{algorithm}
+</pre>
 
 The **Bellman-Ford algorithm** accomplishes the task of finding a shortest path from a single vertex to all vertices in a weighted directed graph. The advantage to this algorithm over Dijkstra's algorithm is that it works on weighted graphs with negative weights. The issue found within Dijkstra's algorithm occured when we had a **negative cycle**, defined as a cycle in which the sum of the weights are negative. To gain a more negative cost path in this case, Dijkstra's would iterate through the cycle an infinite number of times. To combat this, Bellman-Ford is able to detect if a negative cycle exists. The essence is in the fact that the maximum length of a path is $$\\|V\\| - 1,$$ in which we improve our paths by 1 edge each iteration by brute forcing over all edges. This is why when we do a final pass after $$\\|V\\| - 1$$ iterations, a decrease in the cost of any path indicates a negative cycle. Bellman-Ford is slower than Dijkstra's algorithm, performing in $$\mathcal{O}(\\|V\\|\\|E\\|).$$
 
@@ -178,35 +239,52 @@ The **Bellman-Ford algorithm** accomplishes the task of finding a shortest path 
 
 A **minimum spanning tree** of a connected weighted graph $$G = (V, E)$$ is a connected graph $$G' = (E', V')$$ such that $$E' \subseteq E,$$ $$\\|E'\\| = \\|V\\| - 1,$$ and $$\sum_{\{u, v\} \in E'} cost(\{u, v\})$$ is minimal. In other words, a minimum spanning tree of $$G$$ is a tree that includes all vertices of $$G$$ and whose total edge weight cost is minimal. There are two popular algorithms for finding these minimum spanning trees.
 
-```
-prims(G = (V, E)):
-    Initialize empty MST
-    Initialize visited set S
-    x = arbitrary vertex ∈ V
-    S.add(x)
-    while |S| is not equal to |V|:
-        {u, v} = lowest cost edge such that u ∈ S and v ∈ V - S
-        MST.add({u, v})
-        S.add(v)
-    return MST
-```
+<pre id ="Prims" style="display:hidden;">
+    \begin{algorithm}
+    \caption{Prim's}
+    \begin{algorithmic}
+    \PROCEDURE{Prims}{$G$}
+        \STATE $visited \leftarrow \emptyset$
+        \STATE $MST \leftarrow \emptyset$
+        \STATE $x \leftarrow \text{arbitrary vertex} \in G$
+        \STATE $visited.$\CALL{add}{$x$}
+        \WHILE {$visited.$\CALL{size}{} $\neq G.$\CALL{num-vertices}{}}
+            \STATE $\{u, v\} \leftarrow \text{lowest cost edge such that } u \in visited \text{ and } v \notin visited$
+            \STATE $MST.$\CALL{add}{$\{u,v\}$}
+            \STATE $visited.$\CALL{add}{$v$}
+        \ENDWHILE
+        \RETURN{$MST$}
+    \ENDPROCEDURE
+    \end{algorithmic}
+    \end{algorithm}
+</pre>
 
 Prim's algorithm finds the MST by greedily building the tree by examining the next lowest cost edge that we can add to the tree without creating a cycle in the tree. Each step connecting the tree to a vertex not in the tree yet.
 This algorithm can run in $$\mathcal{O}(|E|log(|V|))$$ using a priority queue. We would use Prim's when the graph is dense (number of edges is high).
 
-```
-kruskals(G = (V, E)):
-    Initialize empty MST
-    Initialize union-find U
-    for each v ∈ V:
-        U.make_set(v)
-    for each {u, v} ∈ E ordered by nondecreasing order of weight:
-        if U.find_set(u) is not equal to U.find_set(v):
-            MST.add({u, v})
-            U.union(u, v)
-```
+<pre id ="Kruskals" style="display:hidden;">
+    \begin{algorithm}
+    \caption{Kruskal's}
+    \begin{algorithmic}
+    \PROCEDURE{Kruskals}{$G$}
+        \STATE $U \leftarrow \text{disjoint-set data structure}$
+        \STATE $MST \leftarrow \emptyset$
+        \FOR {$v \in G$}
+            \STATE $U.$\CALL{make-set}{$v$}
+        \ENDFOR
+        \FOR {$\{u,v\} \in G.$\CALL{edges}{} $\text{ordered by nondecreasing weight}$}
+            \IF {$U.$\CALL{find-set}{$u$} $\neq U.$\CALL{find-set}{$v$}}
+                \STATE $MST.$\CALL{add}{$\{u,v\}$}
+                \STATE $U.$\CALL{union}{$u, v$}
+            \ENDIF
+        \ENDFOR
+        \RETURN{$MST$}
+    \ENDPROCEDURE
+    \end{algorithmic}
+    \end{algorithm}
+</pre>
 
-Kruskal's algorithm builds the MST using a union-find data structure. Initially all the vertices are in their
+Kruskal's algorithm builds the MST using a disjoint-set (union-find) data structure. Initially all the vertices are in their
 own sets. We build our tree by greedily combining these sets by looking at the lowest cost edge.
 This algorithm runs in $$\mathcal{O}(\\|E\\|log(\\|E\\|)).$$
 
@@ -217,41 +295,66 @@ This algorithm runs in $$\mathcal{O}(\\|E\\|log(\\|E\\|)).$$
 Directed acyclic graphs appear in many places and luckily they have a neat property. We can obtain a topological
 ordering on the vertices, giving us an ordering in which all edges are directed from left to right. When operating on directed acyclic graphs in algorithm design, it is almost always a wise decision to apply a topological sort first. It is also very important to note that all directed acyclic graphs have a topological ordering and all graphs with a topological ordering are directed acyclic graphs.
 
-```
-topological_sort(G = (V, E)):
-    Initialize empty list L
-    while ∃ v ∈ V not marked:
-        visit(v, L)
-    return L
-
-visit(v, L):
-    if v is marked:
-        return
-    for each u ∈ Neighbors(v):
-        visit(u, L)
-    mark v
-    add v to head of L
-```
+<pre id ="Topological" style="display:hidden;">
+    \begin{algorithm}
+    \caption{Topological Sort}
+    \begin{algorithmic}
+    \PROCEDURE{TopologicalSort}{$G$}
+        \STATE $L \leftarrow \emptyset$
+        \WHILE {$\exist v \in G \text{ that is not permanently marked}$}
+            \STATE \CALL{DFS}{$G, v, L$}
+        \ENDWHILE
+        \RETURN{$L$}
+    \ENDPROCEDURE
+    \PROCEDURE{DFS}{$G, v, L$}
+        \IF {$v \text{ is permanently marked}$}
+            \RETURN{}
+        \ENDIF
+        \IF {$v \text{ is temp marked}$}
+            \STATE \textbf{stop}
+        \ENDIF
+        \STATE $\text{temp mark }v$
+        \FOR {$u \in G.adj[v]$}
+            \STATE \CALL{DFS}{$G, u, L$}
+        \ENDFOR
+        \STATE $\text{remove temp mark }v$
+        \STATE $\text{permanently mark }v$
+        \STATE $L.$\CALL{append}{$v$}
+    \ENDPROCEDURE
+    \end{algorithmic}
+    \end{algorithm}
+</pre>
 
 This algorithm deploys a depth first search and therefore it performs in $$\mathcal{O}(\\|E\\| + \\|V\\|).$$
 The idea is in constructing the order backwards, in which we stop calling the visit DFS once we hit a marked vertex or a vertex with outdegree equal to $$0.$$
 
-```
-kahns(G = (V, E)):
-    Initialize empty list L
-    Initialize set S
-    for each v ∈ V:
-        if v has no incoming edge:
-            S.add(v)
-    while S is not empty:
-        v = S.remove()
-        add v to end of L
-        for each u ∈ Neighbors(v):
-            remove edge {v, u} from E
-            if u has no other incoming edges:
-                S.add(u)
-    return L
-```
+<pre id ="Kahns" style="display:hidden;">
+    \begin{algorithm}
+    \caption{Kahn's}
+    \begin{algorithmic}
+    \PROCEDURE{Kahns}{$G$}
+        \STATE $L \leftarrow \emptyset$
+        \STATE $S \leftarrow \emptyset$
+        \FOR {$v \in G$}
+            \IF {$v \text{ has no incoming edge}$}
+                \STATE $S.$\CALL{add}{$v$}
+            \ENDIF
+        \ENDFOR
+        \WHILE {$S \neq \emptyset$}
+            \STATE $v \leftarrow S.$\CALL{remove}{}
+            \STATE $L.$\CALL{append}{$v$}
+            \FOR {$u \in G.adj[v]$}
+                \STATE $G.$\CALL{remove}{$\{v,u\}$}
+                \IF {$u \text{ has no incoming edges}$}
+                    \STATE $S.$\CALL{add}{$u$}
+                \ENDIF
+            \ENDFOR
+        \ENDWHILE
+        \RETURN{$L$}
+    \ENDPROCEDURE
+    \end{algorithmic}
+    \end{algorithm}
+</pre>
 
 Another algorithm for determining a topological ordering is Kahn's algorithm. This also performs in $$\mathcal{O}(\\|E\\| + \\|V\\|).$$ The order in which the ordering is built is also the order of the ordering. Each time we add
 a vertex $$v$$ to the ordering, that vertex has $$0$$ incoming edges. Upon adding the vertex to the ordering, we also examine the vertices adjacent to it, denoted $$u,$$ in which we remove this edge $$\{v, u\}$$ from the graph. Then adding to our set of vertices with $$0$$ incoming edges, any new vertices with $$0$$ incoming edges now.
@@ -267,21 +370,86 @@ The flow of a cut $$C(S, T)$$ is the amount of flow that crosses from $$S$$ to $
 A useful theorem to note is the **max-flow min-cut theorem**. It asserts that the maximum amount of flow $$f$$
 that can pass from the source $$s$$ to the sink $$t$$ is equal to the capacity of the minimum $$s-t$$ cut.
 
-```
-ford_fulkerson(G = (V, E)):
-    for each {u, v} ∈ E:
-        f(u, v) = 0
-    while ∃ path p from s to t in G_f s.t. c_f(u, v) > 0 for all {u, v} ∈ p:
-        c_f(p) = min{c_f(u, v) : {u, v} ∈ p}
-        for each {u, v} ∈ p:
-            f(u, v) = f(u, v) + c_f(p)
-            f(v, u) = f(v, u) - c_f(p)
-```
+<pre id ="FordFulkerson" style="display:hidden;">
+    \begin{algorithm}
+    \caption{Ford-Fulkerson}
+    \begin{algorithmic}
+    \PROCEDURE{FordFulkerson}{$G$}
+        \STATE $f \leftarrow 0$
+        \FOR {$\{u,v\} \in G.$\CALL{edges}{}}
+            \STATE \CALL{flow}{$u, v$} $\leftarrow 0$
+        \ENDFOR
+        \WHILE {$\exist \text{ path } p \text{ from } s \text{ to } t \text{ in } G_f \text{ s.t. } c_f > 0 \text{ for all edges } \{u,v\} \in p$}
+            \STATE $bottleneck \leftarrow min\{$\CALL{cost}{$u, v$}$: \{u, v\} \in p\}$
+            \STATE $f \leftarrow f + bottleneck$
+            \FOR {$\{u, v\} \in p$}
+                \IF {$\{u, v\} \in G.$\CALL{edges}{}}
+                    \STATE \CALL{flow}{$u, v$} $\leftarrow$ \CALL{flow}{$u, v$} $ + bottleneck$
+                \ELSE
+                    \STATE \CALL{flow}{$v, u$} $\leftarrow$ \CALL{flow}{$v, u$} $ - bottleneck$
+                \ENDIF
+            \ENDFOR
+        \ENDWHILE
+        \RETURN{$f$}
+    \ENDPROCEDURE
+    \end{algorithmic}
+    \end{algorithm}
+</pre>
 
-There is a useful algorithm for computing the maximum flow of a flow network and it is called the **Ford-Fulkerson algorithm**. Its details are best done through pictures. We continually find paths in our flow network, in which we can push flow along. This pushing of flow, gives us an edge that goes in the opposite direction with that flow amount. Once we exhaust all the paths that we can push flow along, whatever vertices are reachable by $$s$$ still, creates the $$S$$ partition in the cut.
+There is a useful algorithm for computing the maximum flow of a flow network and it is called the **Ford-Fulkerson algorithm**. Each iteration of the algorithm, we find an existing path in our flow network, pushing the maximum flow we can along that path. The pushing of the flow will give us edges in the opposite direction of each edge on the path, with the capacity of the flow. As such, we consider edges that are in the original graph forward edges and the edges that go in the opposite direction as backward edges. Once we exhaust all the paths that we can push flow along, whatever vertices are reachable by $$s$$ still, creates the $$S$$ partition in the cut.
 
 <img src="/assets/images/FF.png" alt="ff" width="80%"/>
 
 ### Acknowledgements
 
 I acknowledge the following courses at the Univeristy of Washington for teaching me much of what I know about graph theory: CSE 311 (Foundations), CSE 331 (SWE), CSE 332 (Data Structures), CSE 417 (Algos + Complexity), CSE 446 (ML), CSE 421 (Algos), and CSE 490Z1/422 (Modern Algos). I also acknowledge the Google search engine and its web results for helping me formalize my previous knowledge as well as teaching me things that I never knew I wanted to know (never occurred to me that I could do a topological sort with simple DFS calls).
+
+<script>
+    pseudocode.renderElement(document.getElementById("BFS"),
+                         { lineNumber: true });
+</script>
+
+<script>
+    pseudocode.renderElement(document.getElementById("DFS"),
+                         { lineNumber: true });
+</script>
+
+<script>
+    pseudocode.renderElement(document.getElementById("Dijkstras"),
+                         { lineNumber: true });
+</script>
+
+<script>
+    pseudocode.renderElement(document.getElementById("Astar"),
+                         { lineNumber: true });
+</script>
+
+<script>
+    pseudocode.renderElement(document.getElementById("BellmanFord"),
+                         { lineNumber: true });
+</script>
+
+<script>
+    pseudocode.renderElement(document.getElementById("Prims"),
+                         { lineNumber: true });
+</script>
+
+<script>
+    pseudocode.renderElement(document.getElementById("Kruskals"),
+                         { lineNumber: true });
+</script>
+
+<script>
+    pseudocode.renderElement(document.getElementById("Topological"),
+                         { lineNumber: true });
+</script>
+
+<script>
+    pseudocode.renderElement(document.getElementById("Kahns"),
+                         { lineNumber: true });
+</script>
+
+<script>
+    pseudocode.renderElement(document.getElementById("FordFulkerson"),
+                         { lineNumber: true });
+</script>

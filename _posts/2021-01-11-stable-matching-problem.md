@@ -42,21 +42,31 @@ A fact that isn't obvious is that there always exists a stable matching. We will
 
 ### The Gale-Shapley Algorithm
 
-```
-algorithm:
-    Initialize all m ∈ M as free
-    Initialize all w ∈ W as free
-    while ∃ a free man m who still has a woman to propose to:
-        w = highest woman on m's list to whom m has not yet proposed
-        if w is free:
-            pair (m, w)
-        else ∃ pair (m', w):
-            if w prefers m to m':
-                free m'
-                pair (m, w)
-            else:
-                w rejects m
-```
+<pre id ="GS" style="display:hidden;">
+    \begin{algorithm}
+    \caption{Gale-Shapley}
+    \begin{algorithmic}
+    \PROCEDURE{GaleShapley}{$M, W, Preferences$}
+        \STATE $\text{Initialize all } m \in M \text{ as free}$
+        \STATE $\text{Initialize all } w \in W \text{ as free}$
+        \WHILE {$\exist \text{ free } m \text{ who still has a woman to propose to}$}
+            \STATE $w = \text{highest woman on } m \text{'s list to whom } m \text{ has not yet proposed to}$
+            \IF {$w \text{ is free}$}
+                \STATE $\text{pair } (m, w)$
+            \ELSE 
+                \STATE $m' \leftarrow w \text{'s current paired partner}$
+                \IF {$w \text{ prefers } m \text{ to } m'$}
+                    \STATE $\text{free } m'$
+                    \STATE $\text{pair } (m, w)$
+                \ELSE
+                    \STATE $w \text{ rejects } m$
+                \ENDIF
+            \ENDIF
+        \ENDWHILE
+    \ENDPROCEDURE
+    \end{algorithmic}
+    \end{algorithm}
+</pre>
 
 This algorithm, designed by David Gale and Lloyd Shapley, is quite simple. We start with everyone free and unpaired. We take an arbitrary man $$m$$ who is free and still has women left to propose to, and consider their highest ranked woman $$w$$ that they have not proposed to yet. If the woman is free, we pair $$(m, w).$$ If the woman is already paired up $$(m', w),$$ then we only free $$m'$$ for $$m$$ in the case that $$w$$ prefers $$m$$ to $$m',$$ else $$w$$ rejects $$m.$$
 
@@ -119,3 +129,8 @@ I was first introduced to the Gale-Shapley algorithm by [Shayan Oveis Gharan](ht
 There's also an interesting question, which is still open as far as I know, on the bound for how many stable matchings exist for any given instance. A paper by [Anna Karlin](https://homes.cs.washington.edu/~karlin/), Shayan Oveis Gharan, and Robbie Weber, examines this [[The Paper]](https://arxiv.org/abs/1711.01032). The current agreement for the lower bound on how many stable matchings can exist is $$\Omega(2.28^{n}).$$ Right now, my students in the course are being asked to create a family of instances (a description so that for any $$n \geq 1,$$ we could write down the stable matching instance) in their homework such that there is some $$\Omega(c^{n})$$ stable matchings with $$c > 1$$.
 
 I always thought that this problem was taught at the beginning of my algorithms course to motivate the study of proving algorithms. But I've realized that there is plenty to be considered in its applications to our reality, as well as the study of its limits. I'll have to do further research into the consequences of its applications though.
+
+<script>
+    pseudocode.renderElement(document.getElementById("GS"),
+                         { lineNumber: true });
+</script>
