@@ -18,14 +18,6 @@ Formerly:
 
 - Undergraduate Teaching Assistant: [CSE 417 Algorithms & Computational Complexity Winter 2021](https://courses.cs.washington.edu/courses/cse417/21wi/) at the [Paul G. Allen School of Computer Science & Engineering](https://cs.washington.edu)
 
-Some awards:
-
-- Washington State Opportunity Scholarship ($17.5k)
-
-- John Jamieson Iron Mountain Education Fund Scholarship ($16k)
-
-- Viola Brown Memorial Scholarship ($1k)
-
 Contact: williamv [at] cs [dot] washington [dot] edu
 
 Linkedin: [linkedin.com/in/williamvn/](https://www.linkedin.com/in/williamvn/)
