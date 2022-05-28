@@ -363,9 +363,9 @@ a vertex $$v$$ to the ordering, that vertex has $$0$$ incoming edges. Upon addin
 
 In flow network models, we have a directed graph $$G$$ with capacities along its edges. Suppose we want to send flow along the edges, knowing that these flow amounts cannot exceed the capacities of the edges. We will have a source vertex $$s$$ that emits the flow and a sink vertex $$t$$ that collects the flow. We want to compute the maximum amount of flow that we can send in our network.
 
-An $$s-t$$ cut of a flow network $$(G = (V, E), s, t, c)$$ where $$c$$ is the cost of the edges, is a partition of $$V$$ into two sets $$S$$ and $$T$$ where $$s \in S$$ and $$t \in T$$. The **capacity** of a cut $$C(S, T)$$, denoted $$c(S, T)$$, is the sum of the capacities of the edges $$(u, v)$$ with $$u \in S$$ and $$v \in T$$. That being: $$c(S, T) = \sum_{u \in S} \sum_{v \in T} c(\{u,v\})$$.
+An $$s-t$$ cut of a flow network $$(G = (V, E), s, t, c)$$ where $$c$$ is the cost of the edges, is a partition of $$V$$ into two sets $$S$$ and $$T$$ where $$s \in S$$ and $$t \in T$$. The **capacity** of a cut $$C(S, T)$$, denoted $$c(S, T)$$, is the sum of the capacities of the edges $$(u, v)$$ with $$u \in S$$ and $$v \in T$$. That being: $$c(S, T) = \sum_{\{u,v\} : u \in S, v \in T} c(\{u,v\})$$.
 
-The flow of a cut $$C(S, T)$$ is the amount of flow that crosses from $$S$$ to $$T$$, denoted $$f(S, T)$$ and is defined as $$f(S, T) = (\sum_{u \in S}\sum_{v \in T} f(u ,v) - \sum_{v \in T}\sum_{u \in S} f(v, u))$$
+The flow of a cut $$C(S, T)$$ is the amount of flow that crosses from $$S$$ to $$T$$, denoted $$f(S, T)$$ and is defined as $$f(S, T) = (\sum_{\{u, v\}:u \in S, v \in T} f(u ,v) - \sum_{\{v, u\}: v \in T, u \in S} f(v, u))$$. The flow across a cut is equal to the flow that leaves $$s$$.
 
 A useful theorem to note is the **max-flow min-cut theorem**. It asserts that the maximum amount of flow $$f$$
 that can pass from the source $$s$$ to the sink $$t$$ is equal to the capacity of the minimum $$s-t$$ cut.
