@@ -46,4 +46,6 @@ Rent is not cheap! The money I made from being a teaching assistant was enough t
 
 **#10 It's fun and rewarding**
 
-Half the point of university is to become educated. The other half is to have a good time. It's a moment in your life where you can try things out and see if you like it. Being a teaching assistant is an opportunity you will only get while in university, so be sure to try it before you lose the chance!
+Half the point of university is to become educated. The other half is to have a good time. It's a moment in your life where you can try things out and see if you like it. Being a teaching assistant is an opportunity you will only get while in university.
+
+After holding my final office hour, I had around 15 students congratulate me on graduating. They told me that I carried them through that quarter and that they were so thankful. Each week they came to my office hours and asked questions, so I ended up becoming acquainted with them in turn. It is an incredibly fulfilling sense when you know you've helped someone every week. And students in this department show immense gratitude towards the teaching assistants. One student told me my response time on the question board was insane (I have email notifications turned on). The compliments and gratitude I got from my students made my day. It sincerely makes me wonder what it would be like to pursue teaching as a career. But like all great things, they don't last forever. I am happy that it happened. Seeing the moment a student understands a concept is one of the best feelings ever.
