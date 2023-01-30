@@ -19,21 +19,9 @@ No more than 5% of total assets will be in individual stocks, cryptocurrencies, 
 
 ### Target Allocations
 
-**Taxable Brokerage (Fidelity)**
+75% Total Domestic Stock Market
 
-- 80% - VTI - Vanguard Total Stock Market Index Fund ETF
-- 10% - VEA - Vanguard Developed Markets Index Fund ETF
-- 10% - VWO - Vanguard Emerging Markets Index Fund ETF
-
-**Roth IRA (Fidelity)**
-
-- 100% - VTI - Vanguard Total Stock Market Index Fund ETF
-
-**Traditional 401k (Empower)**
-
-- 60% - State Street S&P 500 Index Fund K
-- 10% - State Street Russell Small//Mid Cap Index Fund K
-- 30% - State Street Global All Cap Equity ex-US Index Fund K
+25% Total International Stock Market
 
 ### Rebalancing Protocol
 
