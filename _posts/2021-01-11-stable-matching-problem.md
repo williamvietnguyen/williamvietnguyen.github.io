@@ -3,6 +3,7 @@ layout: post
 title: "Stable Matching Problem"
 description: Analysis and explanation of Gale-Shapley
 author: William Nguyen
+category: computer science and engineering
 ---
 
 Due to obtaining a teaching assistant position for an algorithms course, I am beginning to revisit the different topics. One such topic is the stable matching problem.

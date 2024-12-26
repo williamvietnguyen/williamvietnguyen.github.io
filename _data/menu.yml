@@ -1,0 +1,39 @@
+# For documentation on this file, see:
+# https://github.com/riggraz/no-style-please#customize-the-menu
+
+entries:
+  - title: info
+    entries:
+      - title: williamvnguyen2[at]gmail.com
+      - title: linkedin
+        url: https://www.linkedin.com/in/williamvn/
+      - title: github
+        url: https://github.com/williamvietnguyen
+
+  - title: all posts
+    post_list:
+      show_more: true
+      show_more_text: See archive...
+      show_more_url: archive.html
+
+  - title: posts by category
+    entries:
+      - title: personal finance
+        post_list:
+          category: personal finance
+      
+      - title: computer science and engineering
+        post_list:
+          category: computer science and engineering
+      
+      - title: career
+        post_list:
+          category: career
+      
+      - title: pedagogy
+        post_list:
+          category: pedagogy
+
+      - title: life
+        post_list:
+          category: life

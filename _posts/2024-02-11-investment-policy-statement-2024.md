@@ -3,6 +3,7 @@ layout: post
 title: "Investment Policy Statement 2024"
 description: IPS 2024
 author: William Nguyen
+category: personal finance
 ---
 
 ## Asset Allocation

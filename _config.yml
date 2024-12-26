@@ -1,65 +1,27 @@
-# Site settings
-title_left: "William"
-title_right: " Nguyen" # default: ""
-description: "My Blog"
-keywords: "William, Nguyen, William Nguyen, Computer Science, UW, University of Washington"
-#url: https://heiswayi.github.io/thinkspace # site url
-baseurl: "" # apply repo name like "/myproject" if used under gh-pages branch, else (under master branch) just leave empty/blank
-cover: "" # image uri like logo/cover image for site seo
+title: William Nguyen # name of the site
+author: William Nguyen # name of site's author
+email: williamvnguyen2@gmail.com # email of site's author
+url: https://william-nguyen.com # root address of the site
+baseurl: "" # subpath of the site, e.g. "/blog" (leave it blank "" if you're site shouldn't use a subpath)
+description: > # description of the site (multiple lines allowed)
+  My blog.
 
-google_analytics: UA-XXXXX-XX
-twitter_username: ""
-comments_enabled: false # if enabled (set to true), please provide your disqus_username
-disqus_shortname: ""
-postshare_enabled: false
+permalink: /:slug.html
 
-# Build settings
-permalink: /:year/:title/
-markdown: kramdown
-highlighter: rouge
+favicon: #"logo.png" # name+extension of favicon (which must be put on the root folder)
+# goat_counter: "yoursitename" # put your GoatCounter name if you want to use GoatCounter analytics
 
-source: ./
-destination: ./_site
+theme: no-style-please # if you are using GitHub Pages, change it to remote_theme: riggraz/no-style-please
 
-use_math: true
+theme_config:
+  appearance: "auto" # can be "light", "dark" or "auto"
+  back_home_text: ".." # customize text for homepage link in post layout
+  date_format: "%Y-%m-%d" # customize how date is formatted
+  show_description: false # show blog description in home page
 
-# Sass configuration
 sass:
-  sass_dir: assets/scss
-  style: compressed # expanded
-
-# Author settings
-author:
-  name: "William Nguyen"
+  style: :compressed
 
 plugins:
-  - jekyll-sitemap
-  - bourbon
-  - jekyll-paginate
-
-# navbar pages
-navbar:
-  - slug: about
-    title: About
-  - slug: blog
-    title: Blog
-
-exclude:
-  - "gulp"
-  - "node_modules"
-  - "bower"
-  - "bower_components"
-  - "config.rb"
-  - "src"
-  - "Gemfile"
-  - "Gemfile.lock"
-  - ".rvmrc"
-  - ".rbenv-version"
-  - "package.json"
-  - "gulpfile.js"
-  - "README.md"
-  - "Rakefile"
-  - "changelog.md"
-  - "script"
-  - "vendor"
-  - "thinkspace.gemspec"
+  - jekyll-feed
+  - jekyll-seo-tag

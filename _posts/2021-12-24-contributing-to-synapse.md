@@ -3,6 +3,7 @@ layout: post
 title: "Contributing to Synapse [Long Read]"
 description: Documentation of my experience interning at Sage
 author: William Nguyen
+category: career
 ---
 
 # Table of Contents

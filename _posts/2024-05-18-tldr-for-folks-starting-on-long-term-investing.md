@@ -3,6 +3,7 @@ layout: post
 title: "Main Lessons of Long-Term Investing"
 description: Hopefully short
 author: William Nguyen
+category: personal finance
 ---
 
 I really like the space of personal finance, retirement planning, and asset allocation. A lot of friends refer to me (despite the fact that I am not a financial advisor) for my random obsessions in the space. I find myself explaining a lot of the same things over and over. I also find myself annoyed by misinformation in the space. This will be a concise TLDR for those that want to get the gist for how "most" people should approach investing. Particularly, long-term investing / investing for retirement. I am not interested in short-term bets and investing, which arguably depending on who you ask, is likely speculation or maybe just gambling.

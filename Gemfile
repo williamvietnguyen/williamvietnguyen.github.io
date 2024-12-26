@@ -1,12 +1,7 @@
-source "https://rubygems.org"
-gemspec
-group :jekyll_plugins do
-    gem "jekyll-sitemap"
-    gem "bourbon"
-    gem "jekyll-paginate"
-end
-gem 'html-proofer'
-gem 'tzinfo'
-gem 'tzinfo-data'
+# frozen_string_literal: true
 
-gem "webrick", "~> 1.7"
+source "https://rubygems.org"
+
+gem "kramdown-parser-gfm"
+
+gemspec

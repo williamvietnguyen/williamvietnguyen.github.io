@@ -3,6 +3,7 @@ layout: post
 title: "Dynamic Programming for Beginners"
 description: Some thoughts
 author: William Nguyen
+category: computer science and engineering
 ---
 
 During my time as an undergraduate teaching assistant for an algorithms course at the university, I've noticed that dynamic programming (DP) is a topic that frustrates many learners when they first encounter it. If this was not evident by the feedback I gave on homework, it was certainly evident from the students who voiced their frustration during my office hours. I will try my best to explain it as simply as I can, but one must practice to truly become familiar with this technique. For those that are familiar with dynamic programming but struggle to solve problems in it, the sections on solving 1-dimensional and multi-dimensional problems may be more useful and worth skipping ahead to.
@@ -27,7 +28,7 @@ $$f(n)=\begin{cases}0 & \text{if } n = 0\\ 1 & \text{if } n = 1\\ f(n-1) + f(n-2
 The above recurrence solves the problem of getting the $$n^{th}$$ number in the Fibonacci sequence. Notice how it is
 recursive in nature. Having an **optimal substructure** means that the optimal solution of $$n$$ will likely involve finding the optimal solution for its subproblems, like $$f(n - 1), f(n - 2), f(n - 3)$$, and so on. The second property to notice is that if we were to run a naive algorithm (the one that is a direct programmatic translation of the above recurrence without anything fancy), then we will be recomputing subproblems. This is where **overlapping subproblems** comes into play.
 
-<img src="/assets/images/fib.png" alt="fib" width="60%"/>
+<img src="./assets/images/fib.png" alt="fib" width="60%"/>
 
 The tree of calls on $$f(4)$$ would create the following tree above. Notice how we are recomputing certain inputs of $$f$$ more than once. We don't need to compute $$f(n - 2)$$ more than once, but in a naive approach of just brute forcing, we would be computing it twice. We can imagine for large inputs of $$n$$, we will get a very poor time complexity due to the recomputation of entire branches. Dynamic programming will optimize our algorithm such that we will only compute each subproblem exactly once, which will avoid recomputing the solutions to these expensive subproblems.
 

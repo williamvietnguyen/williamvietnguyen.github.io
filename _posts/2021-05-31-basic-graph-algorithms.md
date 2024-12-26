@@ -3,6 +3,7 @@ layout: post
 title: "Overview of Elementary Graph Algorithms"
 description: Some Graph Theory
 author: William Nguyen
+category: computer science and engineering
 ---
 
 Graphs are my favorite abstract data type. I am not sure if my undergraduate education on graphs does the subject justice, but this is my attempt at summarizing the basic concepts and algorithms that I've learned in this area during university (minus spectral graph theory, I may dedicate a post to that later on). These algorithms are pretty timeless, so I'd like to have some personal documentation of them, intended to be read by someone who just wants a quick overview of the subject.
@@ -34,7 +35,7 @@ Graphs can also have labels along their edges, such as words or numbers. We call
 
 With that said, there are many types of graphs that one can define which will not be covered here unless applicable (we define more graph types later).
 
-<img src="/assets/images/multigraph.png" alt="multigraph" width="60%"/>
+<img src="./assets/images/multigraph.png" alt="multigraph" width="60%"/>
 
 ### Abstract Data Type Representations
 
@@ -87,7 +88,7 @@ The most important algorithms on graphs are searching algorithms. Being able to 
 
 **Breadth-first search** is an algorithm that traverses the graph starting from a source vertex, level by level. We add the starting vertex to the queue, then as long as the queue is not empty, we remove a vertex from the queue, and append its undiscovered neighbors. This algorithm operates in time linear to the number of vertices and edges, $$\mathcal{O}(\\|V\\| + \\|E\\|)$$.
 
-<img src="/assets/images/BFS.png" alt="bfs" width="60%"/>
+<img src="./assets/images/BFS.png" alt="bfs" width="60%"/>
 
 There are an endless number of applications of BFS, here is a few. We can find a path between two vertices if we keep a track of the paths created by the traversal. This path that is found is actually the shortest path between two vertices on unweighted graphs. We can count the number of connected components by calling BFS on a set of unvisited vertices until we visited all the vertices in the set. We can determine if a graph is **bipartite**, which is a graph that can be partitioned into two sets of vertices $$U$$ and $$V$$ such that all edges connect a vertex in $$U$$ to a vertex in $$V$$. To determine if a graph is bipartite, we would need to ensure that we could color each vertex one of two colors such that no vertex has a neighbor with the same color. This can be done via BFS. Also to note, bipartite graphs do not contain odd-length cycles.
 
@@ -109,7 +110,7 @@ There are an endless number of applications of BFS, here is a few. We can find a
 
 **Depth-first search** is the other fundamental algorithm for searching. It involves exploring as far as possible along some path before backtracking to explore other paths. This can be implemented using a stack, but is more often done recursively using the callstack. For each call of DFS, we examine a vertex's neighbors, calling DFS again on one of its neighbors. Similar to BFS, we should mark vertices discovered as we visit them. And also similar to BFS, this algorithm operates in time linear to the number of vertices and edges, $$\mathcal{O}(\\|V\\| + \\|E\\|)$$.
 
-<img src="/assets/images/DFS.png" alt="dfs" width="60%"/>
+<img src="./assets/images/DFS.png" alt="dfs" width="60%"/>
 
 Similar to BFS, we can use DFS to find connected components and even determine if a graph is bipartite. However, there are various applications of DFS that BFS cannot solve. For example, DFS allows us to find cycles in directed graphs, which does not work in BFS.
 
@@ -155,7 +156,7 @@ While BFS is useful for finding shortest paths in unweighted graphs, it fails to
 
 **Dijkstra's algorithm** is one of the most famous graph traversal algorithms. It only works on weighted graphs in which the weights are positive values. It finds the shortest path to all vertices from some source vertex $$src$$. The proof of this algorithm is by induction. Without going into the weeds with this induction, the intuition for it is that of a greedy approach. The idea that if there was a better path than the one we just evaluated, we would have visited that path before hand. This algorithm can take $$\mathcal{O}((\\|V\\| + \\|E\\|)log(\\|V\\|))$$ if we use a binary heap for our priority queue. Using a fibonacci heap we can improve to $$\mathcal{O}(\\|E\\| + \\|V\\|log(\\|V\\|))$$.
 
-<img src="/assets/images/shortestpaths.png" alt="shortestpath" width="60%"/>
+<img src="./assets/images/shortestpaths.png" alt="shortestpath" width="60%"/>
 
 <pre id ="Astar" style="display:hidden;">
     \begin{algorithm}
@@ -290,7 +291,7 @@ This algorithm runs in $$\mathcal{O}(\\|E\\|log(\\|E\\|))$$.
 
 ### Directed Acyclic Graphs
 
-<img src="/assets/images/toposort.png" alt="toposort" width="60%"/>
+<img src="./assets/images/toposort.png" alt="toposort" width="60%"/>
 
 Directed acyclic graphs appear in many places and luckily they have a neat property. We can obtain a topological
 ordering on the vertices, giving us an ordering in which all edges are directed from left to right. When operating on directed acyclic graphs in algorithm design, it is almost always a wise decision to apply a topological sort first. It is also very important to note that all directed acyclic graphs have a topological ordering and all graphs with a topological ordering are directed acyclic graphs.
@@ -398,7 +399,7 @@ that can pass from the source $$s$$ to the sink $$t$$ is equal to the capacity o
 
 There is a useful algorithm for computing the maximum flow of a flow network and it is called the **Ford-Fulkerson algorithm**. Each iteration of the algorithm, we find an existing path in our flow network, pushing the maximum flow we can along that path. The pushing of the flow will give us edges in the opposite direction of each edge on the path, with the capacity of the flow. As such, we consider edges that are in the original graph forward edges and the edges that go in the opposite direction as backward edges. Once we exhaust all the paths that we can push flow along, whatever vertices are reachable by $$s$$ still, creates the $$S$$ partition in the cut.
 
-<img src="/assets/images/FF.png" alt="ff" width="80%"/>
+<img src="./assets/images/FF.png" alt="ff" width="80%"/>
 
 ### Acknowledgements
 
