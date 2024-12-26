@@ -28,7 +28,7 @@ The specifics to the equity allocation is done separately from the bond allocati
 1. 48% Capitalization-Weighted Total US Stock Market Fund
 2. 32% Capitalization-Weighted Global Ex-US Stock Market Index Fund
 3. 12% US Small Cap Value Fund
-4. 8% Developed Ex-US Developed Small Cap Value Fund
+4. 8% Developed Ex-US Small Cap Value Fund
 
 Our domestic to international stock allocation will be 60/40. We choose a globally diversified portfolio to increase reliability of outcome. Holding imperfectly correlated but high expected return assets will reduce the volatility of the portfolio as measured by standard deviation.
 We do acknowledge the domestic market cap will likely not stay at 60% forever. We take on a certain amount of tracking error if these true global allocations drift away from our chosen 60/40. The equity allocation is subject to revision in the future.
