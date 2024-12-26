@@ -9,31 +9,12 @@ entries:
         url: https://www.linkedin.com/in/williamvn/
       - title: github
         url: https://github.com/williamvietnguyen
-
+      - title: chess.com
+        url: https://www.chess.com/member/girthyrook
+      - title: lichess.org
+        url: https://lichess.org/@/white_a4_black_a5
+  - title: posts by category
+    url: categorized
   - title: all posts
     post_list:
       show_more: true
-      show_more_text: See archive...
-      show_more_url: archive.html
-
-  - title: posts by category
-    entries:
-      - title: personal finance
-        post_list:
-          category: personal finance
-      
-      - title: computer science and engineering
-        post_list:
-          category: computer science and engineering
-      
-      - title: career
-        post_list:
-          category: career
-      
-      - title: pedagogy
-        post_list:
-          category: pedagogy
-
-      - title: life
-        post_list:
-          category: life

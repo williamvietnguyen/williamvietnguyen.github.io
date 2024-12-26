@@ -1,0 +1,20 @@
+entries:
+  - title: personal finance
+    post_list:
+      category: personal finance
+    
+  - title: computer science and engineering
+    post_list:
+      category: computer science and engineering
+      
+  - title: career
+    post_list:
+      category: career
+      
+  - title: pedagogy
+    post_list:
+      category: pedagogy
+
+  - title: life
+    post_list:
+      category: life
