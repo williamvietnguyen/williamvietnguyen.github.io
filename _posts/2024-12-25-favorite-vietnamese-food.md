@@ -3,7 +3,7 @@ layout: post
 title: "Favorite Vietnamese Food"
 description: My tastes
 author: William Nguyen
-category: food
+category: miscellaneous
 ---
 
 This is a list of my favorite Vietnamese food in a rough order. My mom made all of these hundreds of times. There is no guarantee that this is a comprehensive list. I've eaten a lot.

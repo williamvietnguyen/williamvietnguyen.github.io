@@ -7,10 +7,6 @@ entries:
     post_list:
       category: computer science
 
-  - title: food
-    post_list:
-      category: food
- 
   - title: miscellaneous
     post_list:
       category: miscellaneous
