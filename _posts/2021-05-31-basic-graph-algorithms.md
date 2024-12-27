@@ -3,7 +3,7 @@ layout: post
 title: "Overview of Elementary Graph Algorithms"
 description: Some Graph Theory
 author: William Nguyen
-category: computer science and engineering
+category: computer science
 ---
 
 Graphs are my favorite abstract data type. I am not sure if my undergraduate education on graphs does the subject justice, but this is my attempt at summarizing the basic concepts and algorithms that I've learned in this area during university (minus spectral graph theory, I may dedicate a post to that later on). These algorithms are pretty timeless, so I'd like to have some personal documentation of them, intended to be read by someone who just wants a quick overview of the subject.

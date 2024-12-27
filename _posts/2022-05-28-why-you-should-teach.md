@@ -3,7 +3,7 @@ layout: post
 title: "Why Every CS Student Should TA"
 description: TAing is cool
 author: William Nguyen
-category: pedagogy
+category: career
 ---
 
 Being an undergraduate teaching assistant is one of the best experiences I have had as a student

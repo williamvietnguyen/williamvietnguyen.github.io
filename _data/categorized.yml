@@ -3,17 +3,17 @@ entries:
     post_list:
       category: career
 
-  - title: computer science and engineering
+  - title: computer science
     post_list:
-      category: computer science and engineering
+      category: computer science
 
-  - title: life
+  - title: food
     post_list:
-      category: life
+      category: food
  
-  - title: pedagogy
+  - title: miscellaneous
     post_list:
-      category: pedagogy
+      category: miscellaneous
 
   - title: personal finance
     post_list:

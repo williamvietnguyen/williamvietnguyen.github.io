@@ -3,7 +3,7 @@ layout: post
 title: "Dynamic Programming for Beginners"
 description: Some thoughts
 author: William Nguyen
-category: computer science and engineering
+category: computer science 
 ---
 
 During my time as an undergraduate teaching assistant for an algorithms course at the university, I've noticed that dynamic programming (DP) is a topic that frustrates many learners when they first encounter it. If this was not evident by the feedback I gave on homework, it was certainly evident from the students who voiced their frustration during my office hours. I will try my best to explain it as simply as I can, but one must practice to truly become familiar with this technique. For those that are familiar with dynamic programming but struggle to solve problems in it, the sections on solving 1-dimensional and multi-dimensional problems may be more useful and worth skipping ahead to.

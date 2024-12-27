@@ -3,7 +3,7 @@ layout: post
 title: "The Magic Behind Containerization"
 description: Container basics
 author: William Nguyen
-category: computer science and engineering
+category: computer science
 ---
 
 # Why Containers?
