@@ -18,22 +18,22 @@ Cash and cash equivalents (high yield savings, money market funds, certificate o
 
 Fixed income assets are an important piece of every portfolio. We understand that there is a diversifying benefit to holding bonds due to the unique set of risk factors not found in equities. Despite this, we will be deferring the decision to allocate fixed income assets until some future time. The following reasons may clarify:
 
-1. We run the risk of not meeting our future consumption goals due to the lower expected returns of fixed income assets.
-2. Duration matching is less practical. Duration matching over such a long time horizon is less practical.
+1. We run the risk of not meeting our future consumption goals due to the lower expected returns of fixed income.
+2. Duration matching over such a long time horizon is less practical.
 
 ### Equity
 
 The specifics to the equity allocation is done separately from the bond allocation. We apply the following for our stock allocation:
 
 1. 48% Capitalization-Weighted Total US Stock Market Fund
-2. 32% Capitalization-Weighted Global Ex-US Stock Market Index Fund
+2. 32% Capitalization-Weighted Total Global Ex-US Stock Market Index Fund
 3. 12% US Small Cap Value Fund
 4. 8% Developed Ex-US Small Cap Value Fund
 
 Our domestic to international stock allocation will be 60/40. We choose a globally diversified portfolio to increase reliability of outcome. Holding imperfectly correlated but high expected return assets will reduce the volatility of the portfolio as measured by standard deviation.
 We do acknowledge the domestic market cap will likely not stay at 60% forever. We take on a certain amount of tracking error if these true global allocations drift away from our chosen 60/40. The equity allocation is subject to revision in the future.
 
-We choose to take on a 20% tilt towards small cap and value stocks. Ignoring the research on higher expected returns from small cap value stocks, we do this for the following reasons:
+We choose to take on a 20% tilt towards small cap and value stocks. Ignoring the empirical research on higher expected returns from small cap value stocks, we do this for the following reasons:
 
 1. Tilting towards size and value factors gives our portfolio a diversification in risk factors. Rather than only taking on the risk of the market, we choose to take on other independent sources of risk that are not weighted heavily in a market cap weighted portfolio. This may increase our reliability of outcome.
 2. We hedge against our human capital by tilting towards small cap value stocks. Our human capital is heavily tied to large companies.
