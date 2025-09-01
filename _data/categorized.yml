@@ -2,6 +2,10 @@ entries:
   - title: career
     post_list:
       category: career
+  
+  - title: chess
+    post_list:
+      category: chess
 
   - title: computer science
     post_list:
