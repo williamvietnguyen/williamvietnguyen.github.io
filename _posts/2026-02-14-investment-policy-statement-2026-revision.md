@@ -7,8 +7,7 @@ category: personal finance
 ---
 
 It has been 2 years since I made my investment policy statement in 2024. This is a minor short revision to that document.
-The reasoning outlined is more or less still the same. The change is a 5% increase to the small cap and value portion of
-the portfolio. The ratio of domestic to international equities will stay the same.
+The reasoning outlined is more or less still the same.
 
 You can find that original document [here](/investment-policy-statement-2024.html).
 
@@ -18,16 +17,16 @@ This post will be strictly about the asset allocation.
 
 The new allocation is:
 
-1. 45% Capitalization-Weighted Total US Stock Market 
+1. 40% Capitalization-Weighted Total US Stock Market 
 2. 30% Capitalization-Weighted Total Global Ex-US Stock Market
 3. 15% US Small Cap Value
-4. 10% Developed Ex-US Small Cap Value
+4. 15% Developed Ex-US Small Cap Value
 
 The change in weights were:
-1. -3% Capitalization-Weighted Total US Stock Market 
+1. -8% Capitalization-Weighted Total US Stock Market 
 2. -2% Capitalization-Weighted Total Global Ex-US Stock Market
 3. +3% US Small Cap Value
-4. +2% Developed Ex-US Small Cap Value
+4. +7% Developed Ex-US Small Cap Value
 
 ### Investment Products
 
