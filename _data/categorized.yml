@@ -19,3 +19,6 @@ entries:
     post_list:
       category: personal finance
 
+  - title: travel
+    post_list:
+      category: travel

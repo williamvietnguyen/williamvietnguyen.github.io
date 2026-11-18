@@ -2,3 +2,114 @@
 ---
 
 @import "no-style-please";
+
+// The theme highlights whatever a link jumps to (e.g. a TOC heading) in
+// yellow, which dark mode inverts to blue. Turn that off.
+*:target { background: none; }
+
+// Horizontal photo album: swipe/scroll left-right, snaps to each photo
+.album {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 0.5rem;
+
+  img {
+    flex: 0 0 auto;
+    height: 70vh;
+    max-height: 600px;
+    width: auto;
+    max-width: none;
+    margin: 0;
+    scroll-snap-align: center;
+  }
+}
+
+// Slideshow mode, switched on by assets/js/album.js
+.album.album-slideshow {
+  display: block;
+  overflow: visible;
+  padding-bottom: 0;
+
+  img {
+    margin: 0 auto;
+    // Fit the column on narrow screens, keep the shape of the photo
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: min(70vh, 600px);
+  }
+
+  img[hidden] {
+    display: none;
+  }
+}
+
+.album-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 0.5rem 0 1.5rem;
+
+  button {
+    font: inherit;
+    padding: 0.3rem 0.8rem;
+    color: inherit;
+    background: transparent;
+    border: 1px solid currentColor;
+    border-radius: 3px;
+    cursor: pointer;
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: default;
+    }
+  }
+}
+
+.album-count {
+  min-width: 4.5rem;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+// Full-screen photo viewer, opened by clicking an album photo (assets/js/album.js)
+.album-viewer {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.92);
+  cursor: zoom-out;
+
+  img {
+    max-width: calc(100vw - 2rem);
+    max-height: calc(100vh - 2rem);
+    width: auto;
+    height: auto;
+    margin: 0;
+    object-fit: contain;
+  }
+}
+
+.album-viewer-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  font-size: 1.2rem;
+  line-height: 1;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+}
