@@ -29,17 +29,23 @@
 
 // Slideshow mode, switched on by assets/js/album.js
 .album.album-slideshow {
-  display: block;
+  // A fixed-height frame, so Prev / Next don't jump when the next photo is a
+  // different shape. Tall enough for a portrait (3:4) photo at full column
+  // width (the column is 100vw minus the theme's 2rem side padding).
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: min(70vh, 600px, calc((100vw - 4rem) * 4 / 3));
   overflow: visible;
   padding-bottom: 0;
 
   img {
-    margin: 0 auto;
-    // Fit the column on narrow screens, keep the shape of the photo
+    margin: 0;
+    // Fit inside the frame, keep the shape of the photo
     width: auto;
     height: auto;
     max-width: 100%;
-    max-height: min(70vh, 600px);
+    max-height: 100%;
   }
 
   img[hidden] {
