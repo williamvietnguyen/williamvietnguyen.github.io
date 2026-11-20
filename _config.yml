@@ -22,6 +22,10 @@ theme_config:
 sass:
   style: :compressed
 
+# Publish posts even if their date is in the future (otherwise Jekyll hides
+# them until a build runs on or after that date).
+future: true
+
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
